@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE HTML>
 <html lang="it">
 <head>
@@ -17,13 +18,13 @@
         <nav>
             <span id="showLogin" class="current">LOGIN</span>
         </nav>
-        <form id="loginForm" method="post">
+        <form:form name="login" action="login" method="POST">
             <label for="usernameLogin">Username</label>
             <input id="usernameLogin" type="text" name="name" />
             <label for="passwordLogin">Password</label>
             <input id="passwordLogin" type="password" name="password" /> <br />
             <input id="login" type="submit" value="login" />
-        </form>
+        </form:form>
     </div>
 </div>
 </body>

@@ -1,4 +1,4 @@
-package it.controller;
+package it.controllers;
 
 import it.services.CombinationService;
 

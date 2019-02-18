@@ -1,23 +1,32 @@
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE HTML>
+<html lang="it">
 <head>
-    <h2>Ciao <%= request.getSession().getAttribute("username")%></h2>
-    <br>
+    <meta charset="UTF-8">
+    <title>MasterMind</title>
 </head>
 <body>
-    <form action="<%=request.getContextPath()+"/Game" %>" method="get">
-        <label for="numero1">Primo numero</label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="number" name="numero1" min="0" max="9" step="1">
-        <br>
-        <label for="numero2">Secondo numero</label>
-        <input type="number" name="numero2" min="0" max="9" step="1">
-        <br>
-        <label for="numero3">Terzo numero</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="number" name="numero3" min="0" max="9" step="1">
-        <br>
-        <br>
-        <button type="submit" name="invia">Invia</button>
-    </form>
+<h2>Ciao ${user.nome} </h2>
+<section class="title">
+    <div class="titleContainer">
+        <h1 class="firstTitle">Master Mind</h1>
+    </div>
+</section>
+<div id="pageContainer">
+    <div class="formContainer">
+        <nav>
+            <span id="showLogin" class="current">LOGIN</span>
+        </nav>
+        <form:form name="login" action="login" method="POST">
+            <label for="usernameLogin">GIOCO</label>
+            <input id="usernameLogin" type="text" name="name" />
+            <label for="passwordLogin">Password</label>
+            <input id="passwordLogin" type="password" name="password" /> <br />
+            <input id="login" type="submit" value="login" />
+        </form:form>
+    </div>
+</div>
 </body>
 </html>

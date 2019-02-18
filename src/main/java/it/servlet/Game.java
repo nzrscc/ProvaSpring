@@ -1,8 +1,8 @@
 package it.servlet;
 
 import it.Context;
-import it.controller.CombinationController;
-import it.controller.Controller;
+import it.controllers.CombinationController;
+import it.controllers.Controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +25,7 @@ public class Game extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //controller.createTableModel();
+        //controllers.createTableModel();
         controllGame(request, response);
     }
 

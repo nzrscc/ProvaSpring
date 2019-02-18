@@ -1,6 +1,6 @@
 package it;
 
-import it.controller.Controller;
+import it.controllers.Controller;
 import it.models.CombinationModel;
 import it.models.TryModel;
 import it.services.CombinationService;

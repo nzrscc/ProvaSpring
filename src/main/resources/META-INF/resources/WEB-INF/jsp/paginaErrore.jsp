@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>ERRORE NEL SALVATAGGIO DELL'UTENTE</h1>
-<h2> utente non salvato: <%= request.getSession().getAttribute("username") %></h2>
+<h2></h2>
 
 </body>
 </html>
