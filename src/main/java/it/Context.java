@@ -1,8 +1,7 @@
 package it;
 
-import it.controllers.Controller;
+import it.controller.Controller;
 import it.models.CombinationModel;
-import it.repository.Dao;
 import it.models.TryModel;
 import it.services.CombinationService;
 import it.services.TryService;

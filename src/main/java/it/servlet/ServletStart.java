@@ -1,8 +1,8 @@
 package it.servlet;
 
-import it.controllers.Controller;
+import it.controller.Controller;
 import it.javaBean.UserBean;
-import it.controllers.UserController;
+import it.controller.UserController;
 import it.dto.UserDTO;
 
 import javax.servlet.ServletException;

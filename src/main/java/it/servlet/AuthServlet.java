@@ -2,6 +2,7 @@ package it.servlet;
 
 import it.services.UserService;
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-@WebServlet("/login")
+
+@WebServlet("/loginServlet")
 public class AuthServlet extends HttpServlet {
 
     private UserService userService;

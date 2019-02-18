@@ -3,9 +3,17 @@ package it.models;
 public class UserModel {
     private int id;
     private String nome;
+    private String password;
 
     public UserModel() {}
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public UserModel(String nome){
         this.nome = nome;

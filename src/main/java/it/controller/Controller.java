@@ -1,8 +1,6 @@
-package it.controllers;
+package it.controller;
 
-import it.models.CombinationModel;
 import it.models.TryModel;
-import it.repository.DataSource;
 import it.services.CombinationService;
 import it.services.DAOService;
 import it.services.TryService;
