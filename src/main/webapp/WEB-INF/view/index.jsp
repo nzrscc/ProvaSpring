@@ -7,7 +7,7 @@
 			<h1>Spring Boot JSP Example</h1>
 			<h2>Hello ${message}</h2>
 
-			<form action="next" method="get">
+			<form action="hello" method="get">
 				<h1>Inerisci nome</h1>
 			<br>
 				<input type="text" value="name">
