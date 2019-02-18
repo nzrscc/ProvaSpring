@@ -8,7 +8,7 @@
     <title>MasterMind</title>
 </head>
 <body>
-<h2>Ciao ${user.nome} </h2>
+<h2>Ciao ${currentUser.nome} </h2>
 <section class="title">
     <div class="titleContainer">
         <h1 class="firstTitle">Master Mind</h1>
@@ -16,15 +16,18 @@
 </section>
 <div id="pageContainer">
     <div class="formContainer">
-        <nav>
-            <span id="showLogin" class="current">LOGIN</span>
-        </nav>
-        <form:form name="login" action="login" method="POST">
-            <label for="usernameLogin">GIOCO</label>
-            <input id="usernameLogin" type="text" name="name" />
-            <label for="passwordLogin">Password</label>
-            <input id="passwordLogin" type="password" name="password" /> <br />
-            <input id="login" type="submit" value="login" />
+        <form:form action="" method="get">
+            <label for="num1">Primo numero</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="num1" type="number" name="numero1" min="0" max="9" step="1">
+            <br>
+            <label for="num2">Secondo numero</label>
+            <input id="num2" type="number" name="numero2" min="0" max="9" step="1">
+            <br>
+            <label for="num3">Terzo numero</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="num3"type="number" name="numero3" min="0" max="9" step="1">
+            <br>
+            <br>
+            <button type="submit" name="invia">Invia</button>
         </form:form>
     </div>
 </div>

@@ -23,12 +23,15 @@ public class UserDao {
         return instance;
     }
 
-    public boolean addUser(String nome) {
-
+    public boolean addUser(UserModel user) {
+        if (!usernameUnivoco(user.getNome())) {
+            return false;
+        }
         try {
-            String sql = ("INSERT INTO UTENTE(NOME) VALUES(?)");
+            String sql = ("INSERT INTO UTENTE(NOME,PASSWORD) VALUES(?,?)");
             PreparedStatement preparedStatement = dataSource.getConnection().prepareStatement(sql);
-            preparedStatement.setString(1, nome);
+            preparedStatement.setString(1, user.getNome());
+            preparedStatement.setString(2, user.getPassword());
             int row = preparedStatement.executeUpdate();
             dataSource.closeConnection();
             if (row > 0)
@@ -132,5 +135,25 @@ public class UserDao {
         }
         return false;
     }
+
+    private boolean usernameUnivoco(String username) {
+
+        try {
+            String sql = ("SELECT COUNT(*) as conteggio FROM UTENTE AS U WHERE U.NOME = ?");
+            PreparedStatement preparedStatement = dataSource.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, username );
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                int cont  = resultSet.getInt("conteggio");
+                return  (cont == 0);
+            }
+            dataSource.closeConnection();
+            return true;
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        return false;
+    }
 }
+
 

@@ -15,13 +15,8 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-
     public UserService() {
         userDao  = UserDao.getInstance();
-    }
-    public boolean addUser(String nome) {
-        return userDao.addUser(nome);
-
     }
 
     public List<UserDTO> getUsers() {
@@ -36,6 +31,9 @@ public class UserService {
             listDTO.add(currentUserDTO);
         }
         return listDTO;
+    }
+    public boolean addUser (UserModel user ) {
+        return userDao.addUser(user);
     }
 
     public boolean verificaLogin(String username, String password) {
