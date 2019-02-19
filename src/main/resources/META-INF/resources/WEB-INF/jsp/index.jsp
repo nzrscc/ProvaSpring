@@ -11,7 +11,7 @@
 <center>
 
     dio è una bella persona
-    <form action="MMController" method="post">
+    <form action="/user" method="post">
         <h1>ProvaPoteri </h1>
         <label>Inserisci il suo nome</label>
         <input style= "background-color: lemonchiffon" id="nome_user" name="nome_user" value="">

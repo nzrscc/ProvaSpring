@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1>Benvenuto <%= session.getAttribute("nome") %> in MasterMIND!</h1>
+<h1>Benvenuto <%= session.getAttribute("nome_user") %> in MasterMIND!</h1>
 <h2>Il gioco abbia inizio: Trova la combinazione segreta</h2>
 <form action="tenta" method="post">
     <p>
@@ -24,8 +24,7 @@
     </p>
 </form>
 
-<label><%= session.getAttribute("nome") %></label>
-<label><%= request.getParameter("tent_num1")%></label>
-<label><%= request.getParameter("tent_num2")%></label>
-<label><%= request.getParameter("tent_num3")%></label>
+<label>( <%= request.getParameter("tent_num1")%> -- </label>
+<label> <%= request.getParameter("tent_num2")%> -- </label>
+<label> <%= request.getParameter("tent_num3")%> )</label>
 </body>
