@@ -1,17 +1,18 @@
 package it.controllers;
 
+import it.models.GameModel;
 import it.services.CombinationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
-
+@Controller
 public class CombinationController {
+    @Autowired
     private CombinationService combinationService;
 
-    public CombinationController() {
-        combinationService = new CombinationService();
-    }
+    public CombinationController(){}
 
-    public boolean addCombination(int[] array) {
-
-        return combinationService.addCombination(array);
+    public boolean createCombination(int idCurrentGame) {
+      return combinationService.createCombination(idCurrentGame);
     }
 }

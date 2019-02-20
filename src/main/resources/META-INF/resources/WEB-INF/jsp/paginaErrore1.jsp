@@ -14,7 +14,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Utente non salvato</h1>
+    <h1>errore all'avvio del gioco</h1>
 <a href="/">indietro</a>
 <h2></h2>
 

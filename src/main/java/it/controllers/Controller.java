@@ -26,7 +26,7 @@ public class Controller {
 
     public void creaCombinazione()
     {
-        this.combinationService.createCombination();
+     //   this.combinationService.createCombination();
     }
 
     public void verificaInput(String combination)

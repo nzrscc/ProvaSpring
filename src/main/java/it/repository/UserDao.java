@@ -18,11 +18,13 @@ public class UserDao {
     public static UserDao getInstance() {
         if (instance == null) {
             instance = new UserDao();
-            dataSource = DataSource.getInstance();
         }
         return instance;
     }
 
+    private UserDao() {
+        dataSource = DataSource.getInstance();
+    }
     public boolean addUser(UserModel user) {
         if (!usernameUnivoco(user.getNome())) {
             return false;
@@ -153,6 +155,25 @@ public class UserDao {
             e1.printStackTrace();
         }
         return false;
+    }
+
+    public int getIdUser(UserModel user) {
+        int id = -1;
+        try {
+            String sql = ("SELECT ID FROM UTENTE  WHERE NOME = ?");
+            PreparedStatement preparedStatement = dataSource.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, user.getNome());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                id = resultSet.getInt("ID");
+                System.err.println("id user = "+ id);
+            }
+            dataSource.closeConnection();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        return id;
+
     }
 }
 

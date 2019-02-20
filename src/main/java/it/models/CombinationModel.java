@@ -41,4 +41,8 @@ public class CombinationModel {
         this.timeStamp = timeStamp;
     }
 
+    @Override
+    public String toString() {
+        return pcCombination.toString();
+    }
 }

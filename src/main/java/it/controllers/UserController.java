@@ -1,6 +1,8 @@
 package it.controllers;
 
+import it.models.GameModel;
 import it.models.UserModel;
+import it.services.GameService;
 import it.services.UserService;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,22 +10,30 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import sun.misc.Request;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
 
 @Controller
-@Scope("session")
 public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private CombinationController combinationController;
+
+    @Autowired
+    private GameController gameController;
+
+
 
     @RequestMapping("/")
     String home() {
         return "index";
     }
 
+    @Scope("session")
     @RequestMapping(value="/login", method = RequestMethod.POST)
     public ModelAndView login(@ModelAttribute("currentUser") UserModel user) {
         ModelAndView model;
@@ -36,7 +46,17 @@ public class UserController {
         }
 
         if (userService.verificaLogin(user.getNome(), passwordSecure)) {
-            model = new ModelAndView("game");
+            int idCurrentUser = getIdUser(user);
+            int idCurrentGame = getIdCurrentGame(idCurrentUser);
+            GameModel currentGame = gameController.createGame(idCurrentUser);
+            currentGame.setId(idCurrentGame);
+            if( gameController.saveGame(idCurrentUser)
+                && combinationController.createCombination(idCurrentGame)){
+                model = new ModelAndView("game");
+            }
+            else {
+                model = new ModelAndView("paginaErrore1");
+            }
         }
         else {
             model = new ModelAndView("paginaErrore");
@@ -45,12 +65,18 @@ public class UserController {
         return model;
     }
 
+    @RequestMapping(value="/logout",method = RequestMethod.GET)
+    public String logout(HttpServletRequest request){
+        HttpSession httpSession = request.getSession();
+        httpSession.invalidate();
+        request.setAttribute("loggedOut", "notLogged");
+        return "index";
+    }
+
     @RequestMapping(value="/signup", method= RequestMethod.POST)
     public ModelAndView signup(@ModelAttribute("currentUser") UserModel user ) {
         ModelAndView model;
         String passwordSecure = "";
-
-        System.err.println(user.getNome());
 
         try {
             passwordSecure = cifraPassword(user.getPassword());
@@ -71,11 +97,19 @@ public class UserController {
 
     }
 
-    public UserController() {}
+    public UserController(){
+    }
 
     private  String cifraPassword( String password ) throws NoSuchAlgorithmException {
         String passwordSecure = BCrypt.hashpw(password, "$2a$05$djeIcZogMlovcLVQ7i4rJ.");
         return passwordSecure;
+    }
+
+    public int getIdUser(UserModel user) {
+        return userService.getIdUser(user);
+    }
+    public int getIdCurrentGame( int idCurrentUser) {
+        return gameController.getIdCurrentGame(idCurrentUser);
     }
 
 }

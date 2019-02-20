@@ -39,4 +39,8 @@ public class UserService {
     public boolean verificaLogin(String username, String password) {
         return userDao.verificaLogin(username, password);
     }
+
+    public int getIdUser (UserModel user) {
+        return userDao.getIdUser(user);
+    }
 }

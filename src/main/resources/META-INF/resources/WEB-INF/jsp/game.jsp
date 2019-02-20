@@ -8,10 +8,9 @@
     <title>MasterMind</title>
 </head>
 <body>
-<h2>Ciao ${currentUser.nome} </h2>
 <section class="title">
     <div class="titleContainer">
-        <h1 class="firstTitle">Master Mind</h1>
+        <h1 class="firstTitle">Benvenuto in Master Mind ${currentUser.nome}</h1>
     </div>
 </section>
 <div id="pageContainer">
@@ -28,6 +27,12 @@
             <br>
             <br>
             <button type="submit" name="invia">Invia</button>
+        </form:form>
+    </div>
+
+    <div>
+        <form:form action="logout" method="get">
+        <button type="submit" name="logout">logout</button>
         </form:form>
     </div>
 </div>

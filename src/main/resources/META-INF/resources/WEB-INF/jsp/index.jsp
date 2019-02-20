@@ -22,9 +22,9 @@
         </nav>
         <form:form name="login" method="POST">
             <label for="usernameLogin">Username</label>
-            <input id="usernameLogin" type="text" name="nome" />
+            <input id="usernameLogin" type="text" name="nome" required="true" />
             <label for="passwordLogin">Password</label>
-            <input id="passwordLogin" type="password" name="password" /> <br />
+            <input id="passwordLogin" type="password" name="password" required="true" /> <br />
             <input id="login" type='submit' value='Login' onclick='this.form.action="login";' />
             <c:choose>
             <c:when test="${empty registrato}">
@@ -35,6 +35,11 @@
                 </c:otherwise>
             </c:choose>
         </form:form>
+        <c:choose>
+            <c:when test="${loggedOut == 'notLogged'}">
+                <h2>grazie per aver giocato!</h2>
+            </c:when>
+        </c:choose>
     </div>
 </div>
 </body>

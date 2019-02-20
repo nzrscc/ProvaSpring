@@ -44,7 +44,7 @@ public class Game extends HttpServlet {
             System.out.println("primo tentativo");
             this.controller.creaCombinazione();
             int[] pcCombination = this.controller.getCombinationService().getCombination();
-            this.combinationController.addCombination(pcCombination);
+           // this.combinationController.addCombination(pcCombination);
             request.getSession().setAttribute("soluzione", Arrays.toString(pcCombination));
             System.out.println(request.getAttribute("soluzione"));
         }
