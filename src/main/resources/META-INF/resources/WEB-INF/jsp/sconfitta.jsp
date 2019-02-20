@@ -4,15 +4,20 @@
 <!DOCTYPE HTML>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
     <title>Sconfitta</title>
 </head>
-<body >
-<center>
+<body>
 
-    Hai persoooooooooooooooooooooooooo ahhaahahhaahahhahahhaha
-     <%=session.getAttribute("nome_user")%> ti castigheremo
-</center>
+<h2>Sei stato sconfitto dal  <h1>masterBRAIN</h1> **** ${nome} ****</h2>
+
+<h3>Puoi riprovare, oppure dichiarare la mia superiorità!</h3>
+
+<form action="/" method="post">
+    <h1>Gioca ancora</h1>
+    <input type="submit" class="button">
+</form>
+
+
 
 
 </body>

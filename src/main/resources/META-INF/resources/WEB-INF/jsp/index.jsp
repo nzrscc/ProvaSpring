@@ -4,22 +4,16 @@
 <!DOCTYPE HTML>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
     <title>MasterMind</title>
 </head>
-<body >
-<center>
+<body>
 
-    dio è una bella persona
-    <form action="/user" method="post">
-        <h1>ProvaPoteri </h1>
-        <label>Inserisci il suo nome</label>
-        <input style= "background-color: lemonchiffon" id="nome_user" name="nome_user" value="">
+    <form class="indo" action="/user" method="post">
+        <h1>Benvenuto in MasterMind </h1>
+        <label>Inserisci il tuo nome</label>
+        <input id="nome_user" name="nome_user" value="">
         <input type="submit" class="button">
     </form>
-    <%=session.getAttribute("nome_user")%>
-</center>
-
 
 </body>
 </html>

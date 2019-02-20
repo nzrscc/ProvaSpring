@@ -8,9 +8,12 @@ public class MasterService {
     private ArrayList<Integer> combUser;
 
     private String usernameSaved;
-    private TryService tmpTry = new TryService();
+    private TryService tmpTry;
 
-
+    public MasterService()
+    {
+        tmpTry = new TryService();
+    }
 
     //Generatore RANDOM del master
     public ArrayList<Integer> generaMaster() {
@@ -31,7 +34,6 @@ public class MasterService {
     {
         return tmpTry.doCheck(getCombMaster(), getCombUser());
     }
-
 
 
     public String getUsernameSaved() {

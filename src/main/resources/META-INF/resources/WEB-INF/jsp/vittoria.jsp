@@ -4,17 +4,18 @@
 <!DOCTYPE HTML>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>saaa</title>
+    <title>Vittoria</title>
 </head>
-<body >
-<center>
+<body>
 
-    dio è una bella persona <br>
-    ma tu <%=session.getAttribute("nome_user")%> sei più bravo di lui <br>
+<h1>Mitico  **** ${nome} ****</h1>
+<h2>Hai vinto</h2>
+<h3>Ci hai messo --> ${tent} tentativi</h3>
 
-    Hai vinto in <%=session.getAttribute("tent")%> tentativi
-</center>
+<form action="/" method="post">
+    <h1>Rigioca </h1>
+    <input type="submit" class="button">
+</form>
 
 
 </body>
