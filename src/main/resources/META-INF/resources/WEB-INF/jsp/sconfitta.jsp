@@ -5,13 +5,13 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>saaa</title>
+    <title>Sconfitta</title>
 </head>
 <body >
 <center>
 
-    dio è una bella persona <br>
-    ma tu <%=session.getAttribute("nome_user")%> sei più bravo di lui
+    Hai persoooooooooooooooooooooooooo ahhaahahhaahahhahahhaha
+     <%=session.getAttribute("nome_user")%> ti castigheremo
 </center>
 
 
