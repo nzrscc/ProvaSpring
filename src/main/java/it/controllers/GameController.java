@@ -14,11 +14,8 @@ public class GameController {
     @Autowired
     UserController userController;
 
-    GameModel gameModel;
-
-
     public GameModel createGame(int id) {
-        gameModel = new GameModel(id);
+        GameModel gameModel = new GameModel(id);
         return gameModel;
     }
 
@@ -26,21 +23,12 @@ public class GameController {
 
         return gameService.saveGame(idUser);
     }
-    public GameController(){
-        this.gameModel = new GameModel();
-        this.gameService = new GameService();
-    }
-
-    public GameModel getGameModel() {
-        return gameModel;
-    }
-
-    public void setGameModel(GameModel gameModel) {
-        this.gameModel = gameModel;
-    }
-
 
     public  int getIdCurrentGame(int idCurrentUser) {
         return gameService.getIdCurrentGame(idCurrentUser);
+    }
+
+    public GameController(){
+        this.gameService = new GameService();
     }
 }

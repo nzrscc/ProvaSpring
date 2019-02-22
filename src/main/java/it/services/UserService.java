@@ -43,4 +43,5 @@ public class UserService {
     public int getIdUser (UserModel user) {
         return userDao.getIdUser(user);
     }
+
 }

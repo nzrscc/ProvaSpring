@@ -37,7 +37,7 @@ public class DataSource {
 
     public Connection getConnection() {
         try {
-            this.fin = new FileInputStream("C:\\Users\\utente\\IdeaProjects\\TomCatMM\\src\\java\\it\\services\\db.properties");
+            this.fin = new FileInputStream("C:\\Users\\utente\\IdeaProjects\\ProvaSpring\\src\\main\\java\\it\\repository\\db.properties");
             this.p = new Properties();
             this.p.load(fin);
             this.serverName = p.getProperty("sN");
@@ -46,7 +46,6 @@ public class DataSource {
             this.password = p.getProperty("uP");
             this.url = "jdbc:mysql://" + this.serverName + "/" + this.databaseName +"?serverTimezone=UTC";
             Class.forName(this.driverName);
-            System.out.println("Connessione al database selezionato ...");
             this.connection = DriverManager.getConnection(url, username, password);
             System.out.println("Connessione effettuata!");
 

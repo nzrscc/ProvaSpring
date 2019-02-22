@@ -1,7 +1,10 @@
 package it.repository;
 
+import org.springframework.stereotype.Repository;
+
 import java.sql.*;
 
+@Repository
 public class Dao {
 
     private static Dao instance;

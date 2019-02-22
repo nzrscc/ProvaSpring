@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MasterMind</title>
+    <link href="css/mastermind.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <section class="title">

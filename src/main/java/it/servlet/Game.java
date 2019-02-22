@@ -1,20 +1,11 @@
 package it.servlet;
 
-import it.Context;
-import it.controllers.CombinationController;
-import it.controllers.Controller;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.Arrays;
 
 @WebServlet("/Game")
 public class Game extends HttpServlet {
-    private Controller controller;
+    /*private MasterController controller;
     private CombinationController combinationController;
     private int nTentativi=1;
 
@@ -42,20 +33,20 @@ public class Game extends HttpServlet {
         System.out.println("La combination è: "+combination);
         if(Ciclo.contatore == 4 ) {
             System.out.println("primo tentativo");
-            this.controller.creaCombinazione();
+            //this.controller.creaCombinazione();
             int[] pcCombination = this.controller.getCombinationService().getCombination();
            // this.combinationController.addCombination(pcCombination);
             request.getSession().setAttribute("soluzione", Arrays.toString(pcCombination));
             System.out.println(request.getAttribute("soluzione"));
         }
-        this.controller.verificaInput(combination);
+     *//*   this.controller.verificaInput(combination);
         this.controller.verificaCombinazione();
         this.controller.salvaGiocata(controller.getTryModel());
         this.nTentativi++;
         request.setAttribute("PosEsa", this.controller.getTryModel().getEsito()[0]);
         request.setAttribute("PosErr", this.controller.getTryModel().getEsito()[1]);
         request.setAttribute("input", Arrays.toString(this.controller.getTryModel().getUserTry()));
-        if(this.controller.getTryModel().getEsito()[0]<3)
+        if(this.controller.getTryModel().getEsito()[0]<3)*//*
         {
             request.getRequestDispatcher("jsp/result.jsp").include(request,response);
         }else
@@ -74,5 +65,5 @@ public class Game extends HttpServlet {
             request.getRequestDispatcher("jsp/saluti.jsp").include(request,response);
         }
     }
-
+*/
 }

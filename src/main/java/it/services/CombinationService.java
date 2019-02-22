@@ -2,13 +2,16 @@ package it.services;
 
 import it.models.CombinationModel;
 import it.models.GameModel;
+import it.models.TryModel;
 import it.repository.CombinationDao;
 import it.services.utils.Checker;
+import it.services.utils.CheckerMasterMind;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CombinationService  {
+
     private CombinationModel combinationModel;
     private Checker checkerMasterMind;
     @Autowired
@@ -16,6 +19,7 @@ public class CombinationService  {
 
     public CombinationService() {
         combinationModel = new CombinationModel();
+        checkerMasterMind = new CheckerMasterMind();
     }
     public CombinationService(CombinationModel combinationModel, Checker checkerMasterMind) {
         this.combinationModel=combinationModel;
@@ -41,9 +45,18 @@ public class CombinationService  {
         return combinationModel.getPcCombination();
     }
 
-    public int [] check(int [] soluzione, int [] input)
-    {
+
+    public int[] checkCombination(int[]  currentCombination, TryModel currentTry) {
+       return this.check(currentCombination, currentTry.getUserTry());
+    }
+
+    public int [] check(int [] soluzione, int [] input) {
+
         return this.checkerMasterMind.doCheck(soluzione, input);
+    }
+
+    public int getIdCurrentCombination( int idGame) {
+        return combinationDao.getIdCurrentCombination(idGame);
     }
 }
 

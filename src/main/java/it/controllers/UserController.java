@@ -1,8 +1,8 @@
 package it.controllers;
 
+import it.App;
 import it.models.GameModel;
 import it.models.UserModel;
-import it.services.GameService;
 import it.services.UserService;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +27,11 @@ public class UserController {
     private GameController gameController;
 
 
-
-    @RequestMapping("/")
-    String home() {
-        return "index";
-    }
-
     @Scope("session")
-    @RequestMapping(value="/login", method = RequestMethod.POST)
-    public ModelAndView login(@ModelAttribute("currentUser") UserModel user) {
-        ModelAndView model;
+    @RequestMapping(value="/login", method = RequestMethod.POST )
+    public ModelAndView login(@ModelAttribute("currentUser") UserModel user, HttpSession session) {
+        App.getLogger().info("metodo login chiamato");
+        ModelAndView model = new ModelAndView("paginaEerrore1");
         String passwordSecure = "";
 
         try {
@@ -46,13 +41,19 @@ public class UserController {
         }
 
         if (userService.verificaLogin(user.getNome(), passwordSecure)) {
+            App.getLogger().debug("verifica login effettuata con successo");
             int idCurrentUser = getIdUser(user);
-            int idCurrentGame = getIdCurrentGame(idCurrentUser);
+            session.setAttribute("currentIdUser", idCurrentUser);
             GameModel currentGame = gameController.createGame(idCurrentUser);
-            currentGame.setId(idCurrentGame);
-            if( gameController.saveGame(idCurrentUser)
-                && combinationController.createCombination(idCurrentGame)){
-                model = new ModelAndView("game");
+            if( gameController.saveGame(idCurrentUser)){
+                int idCurrentGame = getIdCurrentGame(idCurrentUser);
+                currentGame.setId(idCurrentGame);
+                session.setAttribute("currentIdGame", idCurrentGame);
+                 if(combinationController.createCombination(idCurrentGame) ) {
+                     int idCurrentCombination = combinationController.getIdCurrentCombination(idCurrentGame);
+                     session.setAttribute("currentIdCombination",idCurrentCombination);
+                     model = new ModelAndView("game");
+                 }
             }
             else {
                 model = new ModelAndView("paginaErrore1");
@@ -60,7 +61,7 @@ public class UserController {
         }
         else {
             model = new ModelAndView("paginaErrore");
-            model.addObject("user", user);
+            model.addObject("UserSbagliato", user);
         }
         return model;
     }
@@ -111,5 +112,6 @@ public class UserController {
     public int getIdCurrentGame( int idCurrentUser) {
         return gameController.getIdCurrentGame(idCurrentUser);
     }
+
 
 }
